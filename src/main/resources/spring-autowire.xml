@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="info" class="tech.aistar.entity.UserInfo">
+        <property name="info" value="自动装配"></property>
+    </bean>
+
+<!--    <bean id="info2" class="tech.aistar.entity.UserInfo">-->
+<!--        <property name="info" value="自动装配"></property>-->
+<!--    </bean>-->
+
+<!--    byName - 根据名称-->
+<!--    autowire="byName" - 当前对象中的依赖的那个对象的属性的名称应该要和当前配置文件中的某个-->
+<!--    bean的id属性的值保持一致-->
+<!--    <bean id="user" class="tech.aistar.entity.User" autowire="byName"></bean>-->
+
+<!--    byType - 根据类型来实现自动装配-->
+<!--    1 - 只会筛选出关联的依赖的bean的类型出来-->
+<!--    2 - 确定了依赖的属性类型UserInfo-->
+<!--    3 - 再到spring配置文件中去寻找是否有UserInfo的这个类型的bean-->
+<!--    4 - 找到之后实现根据类型来进行自动装配的
+        注意:不能出现来个同类型的bean标签,否则自动装配失败
+    -->
+    <bean id="user" class="tech.aistar.entity.User" autowire="byType"></bean>
+</beans>

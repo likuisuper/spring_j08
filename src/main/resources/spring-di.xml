@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="user" class="tech.aistar.entity.User">
+<!--        依赖注入-->
+<!--        属性注入 - 反射的技术 -name属性的值和bean中的属性是没有任何关系，和setter方法有关系-->
+        <!--        <property name="id" value="100"></property>-->
+        <!--        <property name="name" value="admin"></property>-->
+        <!--        <property name="password" value="123"></property>-->
+
+        <!--        默认就是User实体类中提供的带参构造参数的顺序进行传参的
+
+                <constructor-arg value="300"></constructor-arg>
+                <constructor-arg value="jack"></constructor-arg>
+                <constructor-arg value="333"></constructor-arg>
+
+                    可以通过index索引来指定将该值设置到带参构造的位置.
+        -->
+        <!--        <constructor-arg value="jack" index="1"></constructor-arg>-->
+        <!--        <constructor-arg value="500" index="0"></constructor-arg>-->
+        <!--        <constructor-arg value="333" index="2"></constructor-arg>-->
+
+        <!--        根据参数类型来匹配带参构造中的类型的位置 - 不推荐-->
+        <constructor-arg value="jack" type="java.lang.String"></constructor-arg>
+        <constructor-arg value="500" type="java.lang.Integer"></constructor-arg>
+        <constructor-arg value="333" type="java.lang.String"></constructor-arg>
+    </bean>
+
+<!--    定义多个car-->
+    <bean id="c1" class="tech.aistar.entity.Car">
+        <property name="id" value="100"></property>
+        <property name="carName" value="宝马"></property>
+    </bean>
+    <bean id="c2" class="tech.aistar.entity.Car">
+        <property name="id" value="200"></property>
+        <property name="carName" value="桑塔纳"></property>
+    </bean>
+    <bean id="u2" class="tech.aistar.entity.User">
+        <property name="id" value="1"></property>
+        <property name="name" value="xx"></property>
+        <property name="password" value="123"></property>
+
+<!--        设置集合关联的属性-->
+        <property name="cars">
+            <list>
+<!--                引用外部bean-->
+                <ref bean="c1"></ref>
+                <ref bean="c2"></ref>
+
+<!--                直接使用内部bean - 声明只在当前bean当中有效-->
+                <bean class="tech.aistar.entity.Car">
+                    <property name="id" value="300"></property>
+                    <property name="carName" value="保时捷"></property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="userInfo" class="tech.aistar.entity.UserInfo">
+        <property name="info" value="初恋都是痛苦的"></property>
+    </bean>
+
+    <bean id="u3" class="tech.aistar.entity.User">
+        <!--        设置null-->
+
+        <property name="userInfo" ref="userInfo"></property>
+        <!--        <property name="userInfo.info" value="这是一个好孩子"></property>-->
+    </bean>
+</beans>

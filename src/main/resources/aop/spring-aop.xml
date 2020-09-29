@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+<!--    开启注解-->
+    <context:component-scan base-package="tech.aistar.aop"></context:component-scan>
+
+<!-- 启用aop注解
+    1.属性值proxy-target-class默认值是false - jdk的动态代理
+    2.- 如果设置true - cglib代理(代理接口,代理类)
+
+    如果是一个类,即使设置成了false,还是会选择使用cglib代理的
+    因为jdk动态代理只能代理接口，不能代理具体的类
+-->
+    <aop:aspectj-autoproxy proxy-target-class="false"></aop:aspectj-autoproxy>
+</beans>

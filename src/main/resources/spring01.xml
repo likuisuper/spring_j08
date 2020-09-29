@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--    可以在spring配置文件中配置当前项目所需要所有的bean
+        1.把所有的bean整个生命都交给spring框架进行管理
+
+        注意点：id属性的值等同于对象的名称 - 必须要保证唯一性
+        -->
+    <bean id="user" class="tech.aistar.entity.User">
+
+    </bean>
+    <bean id="user2" class="tech.aistar.entity.User">
+
+    </bean>
+</beans>

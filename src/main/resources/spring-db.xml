@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    配置这些无状态的bean - 组件-->
+    <bean id="userDao" class="tech.aistar.day01.dao.impl.UserDaoImpl2"></bean>
+    <bean id="userService" class="tech.aistar.day01.service.impl.UserServiceImpl">
+<!--        依赖注入 - 引用外部bean-->
+        <property name="userDao" ref="userDao"></property>
+    </bean>
+</beans>
